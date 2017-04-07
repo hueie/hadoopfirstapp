@@ -13,19 +13,18 @@ import ledger.index.service.IndexService;
 
 @RestController
 public class IndexController {
-	@Autowired
-	private IndexService indexService;
+	//@Autowired
+	//private IndexService indexService;
 	
 	private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
 
     @RequestMapping("/index")
-    public Greeting greeting(@RequestParam(value="name", required=false, defaultValue="World") String name) {
-
-    	IndexVO indexVO = new IndexVO();
-    	indexVO.setId(1);
-    	
-    	indexService.IndexInsert(indexVO);
+    public Greeting index(@RequestParam(value="name", required=false, defaultValue="World") String name) {
+    	//System.out.println("hi");
+    	//IndexVO indexVO = new IndexVO();
+    	//indexVO.setId(1);
+    	//indexService.IndexInsert(indexVO);
     	
     	return new Greeting(counter.incrementAndGet(), String.format(template, name));
     }

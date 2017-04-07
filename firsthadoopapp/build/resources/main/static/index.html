@@ -10,8 +10,8 @@
 
 <div ng-app="myApp" ng-controller="myCtrl"> 
 	Name: <input type="text" ng-model="name"><br>
-	<input type="button" ng-click="GetFullName(1)" value="Get Full Name" />
-	<input type="button" ng-click="PostFullName(1)" value="Post Full Name" />
+	<input type="button" ng-click="GetFullName(1)" value="/Index Get Full Name" />
+	<input type="button" ng-click="PostFullName(1)" value="/Greeting Post Full Name" />
 	<p>hi {{ myData1 }}</p>
  	<p>hi2 {{ myData2 }}</p>
 </div>
@@ -22,7 +22,7 @@ var app = angular.module('myApp', []);
 app.controller('myCtrl', function($scope, $http) {
 	/*GET GO TO Greeting*/
 	$scope.GetFullName = function (employee) {
-	    $http.get( "/greeting?name=" + $scope.name ).then(function(response) {
+	    $http.get( "/index?name=" + $scope.name ).then(function(response) {
 	    	//alert(response.data.id); //response.data for JSON 
 	        $scope.myData1 = response.data.id;
 	        $scope.myData2 = response.data.content;

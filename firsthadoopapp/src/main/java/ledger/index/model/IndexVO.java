@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="index")
+@Table(name="ysindex")
 public class IndexVO {
 	@Id
 	@Column(name="id")

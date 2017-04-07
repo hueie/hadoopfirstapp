@@ -8,13 +8,12 @@ import ledger.index.dao.IndexDAO;
 import ledger.index.model.IndexVO;
 
 @Service
-@Transactional
+//@Transactional
 public class IndexServiceImpl implements IndexService {
 	@Autowired
 	IndexDAO indexDAO;
 
-	@Override
-	@Transactional
+	//@Transactional
 	public void IndexInsert(IndexVO indexVO){
 		indexDAO.IndexInsert(indexVO);
 	}

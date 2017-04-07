@@ -20,6 +20,7 @@ jar {
 repositories {
     mavenCentral()
     maven { url "https://repository.jboss.org/nexus/content/repositories/releases" }
+    maven { url "https://code.lds.org/nexus/content/groups/main-repo" }
 }
 
 sourceCompatibility = 1.8
@@ -27,15 +28,21 @@ targetCompatibility = 1.8
 
 dependencies {
 	compile("org.springframework.boot:spring-boot-starter-web")
-	testCompile('org.springframework.boot:spring-boot-starter-test')
-   	compile("org.springframework.boot:spring-boot-devtools")
+	compile("org.springframework:spring-jdbc")
+    compile("com.h2database:h2")
     compile("org.springframework.boot:spring-boot-starter-data-jpa")
-    compile("org.springframework.boot:spring-boot-starter-jdbc")
-    compile("org.springframework.boot:spring-boot-configuration-processor")
+	
+	//testCompile('org.springframework.boot:spring-boot-starter-test')
+   	//compile("org.springframework.boot:spring-boot-devtools")
+//    compile("org.springframework.boot:spring-boot-starter-jdbc")
+//    compile("org.springframework.boot:spring-boot-configuration-processor")
     
-    compile("org.javassist:javassist:3.18.2-GA")
-    compile("org.hibernate:hibernate-core:4.3.6.Final")
-    compile("commons-dbcp:commons-dbcp:1.4")  
+//    compile("org.javassist:javassist:3.18.2-GA")
+
+    compile("org.hibernate:hibernate-core:5.2.9.Final")
+    compile("org.apache.commons:commons-dbcp2:2.1.1")  
+    compile("com.oracle:ojdbc6:11.2.0.3")
+   	
    	//compile fileTree(dir: 'libs', include: '*.jar')
     
     
