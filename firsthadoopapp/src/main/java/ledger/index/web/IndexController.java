@@ -17,7 +17,7 @@ public class IndexController {
 	
 	private final AtomicLong counter = new AtomicLong();
 	
-    @RequestMapping("/index")
+    @RequestMapping("/ysindex")
     public IndexVO index(@RequestParam(value="name", required=false, defaultValue="World") String name) {
     	System.out.println("index : param : " + name);
     	IndexVO indexVO = new IndexVO();

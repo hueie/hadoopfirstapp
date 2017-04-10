@@ -21,7 +21,7 @@ var app = angular.module('myApp', []);
 app.controller('myCtrl', function($scope, $http) {
 	/*GET GO TO Greeting*/
 	$scope.GetFullName = function (employee) {
-	    $http.get( "/index?name=" + $scope.name ).then(function(response) {
+	    $http.get( "/ysindex?name=" + $scope.name ).then(function(response) {
 	    	$scope.myData1 = response.data.id;
 	        //$scope.myData2 = response.data.content;
 	    });
@@ -29,7 +29,7 @@ app.controller('myCtrl', function($scope, $http) {
 	
 	/*Post GO TO Greeting*/
 	$scope.PostFullName = function (employee) {
-	    $http.put( "/index", {'name': $scope.name} ).then(function(response) {
+	    $http.put( "/ysindex", {'name': $scope.name} ).then(function(response) {
 	    	$scope.myData1 = response.data.id;
 	        //$scope.myData2 = response.data.content;
 	    });
