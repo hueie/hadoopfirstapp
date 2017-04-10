@@ -2,6 +2,8 @@ package ledger.index.web;
 
 import java.util.concurrent.atomic.AtomicLong;
 
+import javax.annotation.Resource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,6 +14,7 @@ import ledger.index.service.IndexService;
 
 @RestController
 public class IndexController {
+	
 	@Autowired
 	private IndexService indexService;
 	
