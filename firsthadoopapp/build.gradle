@@ -38,10 +38,10 @@ dependencies {
    	
    	//compile("com.h2database:h2")
     
-   	
+   	compile("org.springframework.boot:spring-boot-devtools")
+	
    	//testCompile('org.springframework.boot:spring-boot-starter-test')
-   	//compile("org.springframework.boot:spring-boot-devtools")
-	//compile("org.springframework:spring-jdbc")
+   	//compile("org.springframework:spring-jdbc")
     
 	//compile("org.springframework.boot:spring-boot-configuration-processor")
     //compile("org.javassist:javassist:3.18.2-GA")

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import ledger.index.model.IndexVO;
+import ledger.index.repository.Index;
 import ledger.index.service.IndexService;
 
 @RestController
@@ -21,12 +21,12 @@ public class IndexController {
 	private final AtomicLong counter = new AtomicLong();
 	
     @RequestMapping("/ysindex")
-    public IndexVO index(@RequestParam(value="name", required=false, defaultValue="World") String name) {
+    public Index index(@RequestParam(value="name", required=false, defaultValue="World") String name) {
     	System.out.println("index : param : " + name);
-    	IndexVO indexVO = new IndexVO();
-    	indexVO.setId( (int)counter.incrementAndGet() );
-    	indexService.IndexInsert(indexVO);
+    	Index index = new Index();
+    	index.setId( (int)counter.incrementAndGet() );
+    	indexService.IndexInsert(index);
     	
-    	return indexVO;
+    	return index;
     }
 }

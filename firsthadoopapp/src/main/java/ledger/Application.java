@@ -8,14 +8,14 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-@SpringBootApplication
+
+@SpringBootApplication // same as @Configuration @EnableAutoConfiguration @ComponentScan
 @EnableTransactionManagement
-@EnableAutoConfiguration
-@ComponentScan
 @EnableJpaRepositories
 @EntityScan
 public class Application {
     public static void main(String[] args) {
+    	//System.setProperty("spring.devtools.restart.enabled", "false");
         SpringApplication.run(Application.class, args);
     }
 }
