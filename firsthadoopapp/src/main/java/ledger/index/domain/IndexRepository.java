@@ -1,4 +1,4 @@
-package ledger.index.repository;
+package ledger.index.domain;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

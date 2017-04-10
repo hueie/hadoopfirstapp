@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import ledger.index.repository.Index;
+import ledger.index.domain.Index;
 import ledger.index.service.IndexService;
 
 @RestController
