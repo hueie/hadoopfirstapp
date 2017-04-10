@@ -1,3 +1,4 @@
+/*
 package ledger.config;
 
 import java.util.Properties;
@@ -78,52 +79,7 @@ public class HibernateConfig {
 	@Autowired
 	private LocalContainerEntityManagerFactoryBean entityManagerFactory;
 
-	/*
-	 * @Bean public LocalSessionFactoryBean getSessionFactory() {
-	 * LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
-	 * sessionFactory.setDataSource(dataSource());
-	 * sessionFactory.setPackagesToScan(new String[] { "ledger.index.model" });
-	 * sessionFactory.setHibernateProperties(getHibernateProperties()); return
-	 * sessionFactory; }
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * @Bean public DataSource dataSource() { DriverManagerDataSource dataSource
-	 * = new DriverManagerDataSource();
-	 * dataSource.setDriverClassName(env.getRequiredProperty("datasource.driver"
-	 * )); dataSource.setUrl(env.getRequiredProperty("datasource.url"));
-	 * dataSource.setUsername(env.getRequiredProperty("datasource.username"));
-	 * dataSource.setPassword(env.getRequiredProperty("datasource.password"));
-	 * return dataSource; }
-	 * 
-	 * private Properties getHibernateProperties() { Properties properties = new
-	 * Properties(); properties.put(AvailableSettings.DIALECT,
-	 * env.getRequiredProperty("hibernate.dialect"));
-	 * properties.put(AvailableSettings.SHOW_SQL,
-	 * env.getRequiredProperty("hibernate.show_sql"));
-	 * properties.put(AvailableSettings.STATEMENT_BATCH_SIZE,
-	 * env.getRequiredProperty("hibernate.batch.size"));
-	 * properties.put(AvailableSettings.HBM2DDL_AUTO,
-	 * env.getRequiredProperty("hibernate.hbm2ddl.auto"));
-	 * properties.put(AvailableSettings.CURRENT_SESSION_CONTEXT_CLASS,
-	 * env.getRequiredProperty("hibernate.current.session.context.class"));
-	 * return properties; }
-	 * 
-	 *
-	 * 
-	 * 
-	 * @Bean //이 함수는 스프링에서 사용하는 Bean(클래스, 인스턴스, Autowired에 사용되는 ) 을 리턴해준다!!
-	 * 
-	 * @Autowired // for DI into args SessionFactory By Using
-	 * getSessionFactory() function above to generate SessionFactory. public
-	 * HibernateTransactionManager transactionManager(SessionFactory
-	 * sessionFactory) { HibernateTransactionManager txManager = new
-	 * HibernateTransactionManager();
-	 * txManager.setSessionFactory(sessionFactory); return txManager; }
-	 * 
-	 * 
-	 */
+	
 
 }
+*/

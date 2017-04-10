@@ -12,8 +12,7 @@
 	Name: <input type="text" ng-model="name"><br>
 	<input type="button" ng-click="GetFullName(1)" value="/Index Get Full Name" />
 	<input type="button" ng-click="PostFullName(1)" value="/Greeting Post Full Name" />
-	<p>hi {{ myData1 }}</p>
- 	<p>hi2 {{ myData2 }}</p>
+	<p>ID {{ myData1 }}</p>
 </div>
     
 
@@ -23,31 +22,21 @@ app.controller('myCtrl', function($scope, $http) {
 	/*GET GO TO Greeting*/
 	$scope.GetFullName = function (employee) {
 	    $http.get( "/index?name=" + $scope.name ).then(function(response) {
-	    	//alert(response.data.id); //response.data for JSON 
-	        $scope.myData1 = response.data.id;
-	        $scope.myData2 = response.data.content;
+	    	$scope.myData1 = response.data.id;
+	        //$scope.myData2 = response.data.content;
 	    });
 	}
 	
 	/*Post GO TO Greeting*/
 	$scope.PostFullName = function (employee) {
-	    $http.put( "/greeting", {'name': $scope.name} ).then(function(response) {
-	    	//alert(response.data.id); //response.data for JSON 
-	        $scope.myData1 = response.data.id;
-	        $scope.myData2 = response.data.content;
+	    $http.put( "/index", {'name': $scope.name} ).then(function(response) {
+	    	$scope.myData1 = response.data.id;
+	        //$scope.myData2 = response.data.content;
 	    });
 	}
 });
 
 
-/*
- $http.get("/greeting",
-	    	params: { name: $scope.name }		
-	    ).then(function(response) {
-	        $scope.myData1 = response.Greeting.id;
-	        $scope.myData2 = response.Greeting.content;
-	    }); 
- */
 </script>
     
 </body>

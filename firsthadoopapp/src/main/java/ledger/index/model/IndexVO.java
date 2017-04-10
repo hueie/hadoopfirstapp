@@ -11,9 +11,14 @@ public class IndexVO {
 	@Id
 	@Column(name="id")
 	private int id;
+	
+	public IndexVO() {
+    }
+	
+	public IndexVO(int id) {
+        this.id = id;
+    }
 
-	
-	
 	public int getId() {
 		return id;
 	}
@@ -21,4 +26,5 @@ public class IndexVO {
 	public void setId(int id) {
 		this.id = id;
 	}
+
 }
