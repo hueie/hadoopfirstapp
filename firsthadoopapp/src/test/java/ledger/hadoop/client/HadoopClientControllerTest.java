@@ -1,34 +1,28 @@
 package ledger.hadoop.client;
 
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.URI;
 
+import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FSDataInputStream;
+import org.apache.hadoop.fs.FileSystem;
+import org.apache.hadoop.fs.Path;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.data.hadoop.fs.SimplerFileSystem;
-import org.springframework.test.context.junit4.SpringRunner;
 
 public class HadoopClientControllerTest {
-/*	
-	@Before
-	public void before() {
-		StepSynchronizationManager.release();
-		StepSynchronizationManager.close();
-	}
-*/
 	
 	public class HdfsClient {
         private SimplerFileSystem simpleFS;
 
+        public void setSimpleFS(SimplerFileSystem simpleFS){
+        	this.simpleFS = simpleFS;
+        }
+        
         public String readFile(String filePath) throws IOException {
             FSDataInputStream inputStream = this.simpleFS.open(filePath);
             String output =  getStringFromInputStream(inputStream.getWrappedStream());
@@ -36,9 +30,6 @@ public class HadoopClientControllerTest {
             return output;
         }
         
-        public void setSimpleFS(SimplerFileSystem simpleFS){
-        	this.simpleFS = simpleFS;
-        }
         
     	private String getStringFromInputStream(InputStream is) {
     		BufferedReader br = null;
@@ -67,56 +58,45 @@ public class HadoopClientControllerTest {
     	}
 	}
 	
-	@Autowired
-    private TestRestTemplate restTemplate;
 	
 	@Test
 	public void HadoopClient() throws Exception {
-		int port = 32783;
-		assertThat("aaa").contains("aaa");
-
-		/*
+		//assertThat("aaa").contains("aaa");
+		
+		/* etc/hadoop/core-site.xml */
+		int port = 9000;
+		String ip = "192.168.1.129";
     	HdfsClient hdfsClient = new HdfsClient();
         Configuration conf = new Configuration();
-
-        conf.set("fs.defaultFS","hdfs://localhost:32783");
+        //conf.set("fs.default.name","hdfs://"+ip+":" + port);
+        conf.set("fs.defaultFS","hdfs://"+ip+":" + port);
+       	FileSystem file = FileSystem.get(conf);
+       	
+        URI uri = URI.create ("hdfs://"+ip+":" + port + "/README.txt");
+       	FSDataInputStream in = file.open(new Path(uri));
+       	byte[] btbuffer = new byte[5];
+        in.seek(5); // sent to 5th position
+        //Assert.assertEquals(5, in.getPos());
+        in.read(btbuffer, 0, 5);//read 5 byte in byte array from offset 0
+        System.out.println(new String(btbuffer));// &amp;amp;amp;quot; print 5 character from 5th position
+        in.read(10,btbuffer, 0, 5);
+      
+        /*
         FileSystem fs = FileSystem.get(conf);
         SimplerFileSystem sFs = new SimplerFileSystem(fs);
+        
+        Path p = new Path("/");
+		RemoteIterator<LocatedFileStatus> a = sFs.listFiles(p, false);
+		System.out.println(a.toString());
+		*/
+		
+        /*
         hdfsClient.setSimpleFS(sFs);
-
-        String filePath = "/tmp/tmpTestReadTest.txt";
-        String output = hdfsClient.readFile(filePath);
-    	*/
+        String HDFSfilePath = "/README.txt";
+        String output = hdfsClient.readFile(HDFSfilePath);
+		System.out.println(output);
+		*/
 		
-		
-    	
-/*
-		GenericXmlApplicationContext ctx = new GenericXmlApplicationContext(
-				"/org/springframework/data/hadoop/batch/in-do-out.xml");
-
-		ctx.registerShutdownHook();
-
-		FileSystem fs = FileSystem.get(ctx.getBean(Configuration.class));
-		System.out.println("FS is " + fs.getClass().getName());
-		HdfsResourceLoader hrl = ctx.getBean(HdfsResourceLoader.class);
-		Resource resource = hrl.getResource("/ide-test/output/word/");
-
-		assertTrue(ctx.isPrototype("script-tasklet"));
-
-		fs.delete(new Path(resource.getURI().toString()), true);
-
-		JobsTrigger.startJobs(ctx);
-
-		Path p = new Path("/ide-test/output/word/");
-		Job job = (Job) ctx.getBean("mr-job");
-		Configuration c = job.getConfiguration();
-		FileSystem fs2 = p.getFileSystem(c);
-		System.out.println("FS is " + fs2.getClass().getName());
-
-		fs2.exists(p);
-
-		ctx.close();
-      */
         
     }
 }
