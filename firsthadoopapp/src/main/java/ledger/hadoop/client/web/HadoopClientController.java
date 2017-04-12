@@ -20,9 +20,6 @@ import ledger.index.service.IndexService;
 @RestController
 public class HadoopClientController {
 	
-	@Autowired
-	private IndexService indexService;
-	
 	private final AtomicLong counter = new AtomicLong();
 	
 	public class HdfsClient {
@@ -67,11 +64,11 @@ public class HadoopClientController {
 	}
 	
 	
-    @RequestMapping("/ysindex")
-    public String index(@RequestParam(value="name", required=false, defaultValue="World") String name) throws IOException {
+    @RequestMapping("/hadoop/client")
+    public String HadoopClient(@RequestParam(value="name", required=false, defaultValue="World") String name) throws IOException {
     	HdfsClient hdfsClient = new HdfsClient();
-
         Configuration conf = new Configuration();
+
         conf.set("fs.defaultFS","hdfs://localhost:32783");
         FileSystem fs = FileSystem.get(conf);
         SimplerFileSystem sFs = new SimplerFileSystem(fs);
