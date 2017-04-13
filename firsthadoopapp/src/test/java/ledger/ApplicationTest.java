@@ -1,27 +1,25 @@
+/*
 package ledger;
 
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-
-import org.apache.hadoop.fs.FSDataInputStream;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.data.hadoop.fs.SimplerFileSystem;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.support.AnnotationConfigContextLoader;
+
+import ledger.hadoop.config.HadoopConfig;
 
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@ContextConfiguration(classes=HadoopConfig.class, loader=AnnotationConfigContextLoader.class)
 public class ApplicationTest {
+	
 	@Test
     public void contextLoads() throws Exception {
-    }
+		
+	}
 }
+*/

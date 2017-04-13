@@ -35,11 +35,10 @@ dependencies {
     compile("org.hibernate:hibernate-core:5.2.9.Final")
     compile("org.apache.commons:commons-dbcp2:2.1.1")  
     compile("com.oracle:ojdbc6:11.2.0.3")
-   	    
+	
    	compile("org.springframework.boot:spring-boot-devtools")
 	
 	compile("org.springframework.data:spring-data-hadoop:2.4.0.RELEASE")
-	
 
    	testCompile('org.springframework.boot:spring-boot-starter-test')
     testCompile("junit:junit")
