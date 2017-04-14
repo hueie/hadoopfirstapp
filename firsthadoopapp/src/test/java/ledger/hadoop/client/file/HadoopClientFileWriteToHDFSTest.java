@@ -6,6 +6,7 @@ import java.util.Iterator;
 
 import javax.annotation.Resource;
 
+import org.apache.hadoop.fs.FSDataInputStream;
 import org.apache.hadoop.fs.FSDataOutputStream;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,14 +20,13 @@ import ledger.hadoop.config.LedgerHdfsClient;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = HadoopConfig.class, loader = AnnotationConfigContextLoader.class)
-public class HadoopClientFileTransferToHDFSTest {
+public class HadoopClientFileWriteToHDFSTest {
 
 	@Resource(name = "LedgerHdfsClient")
 	private LedgerHdfsClient ledgerHdfsClient;
 
 	@Test
 	public void HadoopClient() throws Exception {
-		System.out.println("File Transfers (Writes) To HDFS Start!");
 		/*
 		 * You can see These Errors
 		 * Error 1)  
@@ -48,30 +48,30 @@ public class HadoopClientFileTransferToHDFSTest {
 		 * I has not solved Yet!!
 		 * 
 		 */
+		System.out.println("File Transfers (Writes) To HDFS Start!");
 		
 		//File Write To HDFS
 		String HDFSfilePath = "/test/HadoopClientFileTransferToHDFSTest.txt";
 		String fileContents = "Hello, I'm Youngseok Joung.";
 		this.writeFile(ledgerHdfsClient.getSimpleFS(), HDFSfilePath, fileContents);
-		
+						
 		//File Read From HDFS
 		String output2 = ledgerHdfsClient.readFile(HDFSfilePath);
 		System.out.println("Output : " + output2);
 		System.out.println("File Transfers (Writes) To HDFS End!");
 	}
 
-	private void writeFile(SimplerFileSystem fs, String filePath, String fileContents) {
+
+	private void writeFile(SimplerFileSystem fs, String filePath, String filecontents) {
 		try {
 			if (fs.exists(filePath)) {
-				System.out.println("File Delete!!!");
-				fs.delete(filePath, true);
-			} else {
-				System.out.println("File Create!!!");
+				//fs.delete(filePath, true);
+				return;
+			} else{
 				fs.create(filePath);
-				
 				FSDataOutputStream stm = fs.create(filePath);
-				if (fileContents != null) {
-						stm.writeBytes(fileContents);
+				if (filecontents != null) {
+						stm.writeBytes(filecontents);
 						stm.writeBytes("\n");
 				}
 				stm.close();
