@@ -1,12 +1,9 @@
 package ledger.hadoop.client.file;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
 
 import javax.annotation.Resource;
 
-import org.apache.hadoop.fs.FSDataInputStream;
 import org.apache.hadoop.fs.FSDataOutputStream;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -47,6 +44,7 @@ public class HadoopClientFileWriteToHDFSTest {
 		 * 
 		 * I has not solved Yet!!
 		 * 
+		 * Reference : programcreek.com (2017) Available at http://www.programcreek.com/java-api-examples/org.apache.hadoop.fs.FSDataOutputStream
 		 */
 		System.out.println("File Transfers (Writes) To HDFS Start!");
 		

@@ -13,20 +13,34 @@ import org.springframework.boot.test.context.TestComponent;
 import org.springframework.data.hadoop.fs.SimplerFileSystem;
 
 public class LedgerHdfsClient {
+	
+	private Configuration conf;
 	private SimplerFileSystem simpleFS;
-
+	
 	@Autowired
-	public void setSimpleFS() {
+	public LedgerHdfsClient(){
+		setConf();
+		setSimpleFS();
+	}
+	
+	//@Autowired
+	public void setConf() {
 		/* etc/hadoop/core-site.xml */
 		int port = 9000;
 		String ip = "192.168.1.129";
-		
-		Configuration conf = new Configuration();
-		conf.set("fs.defaultFS", "hdfs://" + ip + ":" + port); 
-		conf.set("dfs.replication", "1");
-
+		Configuration tmpconf = new Configuration();
+		tmpconf.set("fs.defaultFS", "hdfs://" + ip + ":" + port); 
+		tmpconf.set("dfs.replication", "1");
+		this.conf = tmpconf;
+	}
+	public Configuration getConf() {
+		return conf;
+	}
+	
+	//@Autowired
+	public void setSimpleFS() {
 		try {
-			FileSystem filesystem = FileSystem.get(conf);
+			FileSystem filesystem = FileSystem.get(this.conf);
 	    	this.simpleFS =  new SimplerFileSystem(filesystem);
 		} catch (IOException e) {
 			e.printStackTrace();
