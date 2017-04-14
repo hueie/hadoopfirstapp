@@ -37,6 +37,7 @@ public class LedgerHdfsClient {
 		return simpleFS;
 	}
 	
+	
 	public String readFile(String filePath) throws IOException {
 		FSDataInputStream inputStream = this.simpleFS.open(filePath);
 		String output = getStringFromInputStream(inputStream.getWrappedStream());

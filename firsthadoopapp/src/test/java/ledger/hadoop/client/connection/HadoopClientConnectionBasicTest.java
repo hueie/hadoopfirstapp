@@ -1,4 +1,4 @@
-package ledger.hadoop.client;
+package ledger.hadoop.client.connection;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -16,7 +16,7 @@ import org.springframework.data.hadoop.fs.SimplerFileSystem;
 import org.springframework.test.context.junit4.SpringRunner;
 
 //@RunWith(SpringRunner.class)
-public class HadoopClientBasicTest {
+public class HadoopClientConnectionBasicTest {
 	//@Test
 	public void HadoopClient() throws Exception {
 		System.out.println("Test Start!");
