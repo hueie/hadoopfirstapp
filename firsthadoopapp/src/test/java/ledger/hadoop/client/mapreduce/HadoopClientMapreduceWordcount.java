@@ -1,13 +1,19 @@
 
 /*
-		 * !!!!!!!!!!!!Not Finish!!!!!!!!!!!!!!!!
-		 * !!! It is NOT POSSIBLE TO EXECUTE MAPREDUCE REMOTELY WITHOUT JAR FILE !!!!
-		 * 
-		 *  We should add mapred-site.xml & yarn-site.xml
-		 *  and Start ResourceManager daemon and NodeManager daemon
-		 *  sbin/start-yarn.sh
-		 *  
-		 */
+ * !!!!!!!!!!!!Not Finish!!!!!!!!!!!!!!!!
+ * !!! It is NOT POSSIBLE TO EXECUTE MAPREDUCE REMOTELY WITHOUT JAR FILE !!!!
+ * 
+ *  We should add mapred-site.xml & yarn-site.xml
+ *  and Start ResourceManager daemon and NodeManager daemon
+ *  sbin/start-yarn.sh
+ *  
+ *  YARN on a Single Node
+ *  http://hadoop.apache.org/docs/r2.7.3/hadoop-project-dist/hadoop-common/SingleCluster.html
+ *  
+ *  Examples
+ *  http://www.programcreek.com/java-api-examples/index.php?api=org.apache.hadoop.mapreduce.Job
+ */
+
 /*
 package ledger.hadoop.client.mapreduce;
 
