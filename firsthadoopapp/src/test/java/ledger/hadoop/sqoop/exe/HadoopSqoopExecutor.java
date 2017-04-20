@@ -1,3 +1,5 @@
+package ledger.hadoop.sqoop.exe;
+
 
 
 import java.io.File;
@@ -20,11 +22,11 @@ public class HadoopSqoopExecutor {
 	 * 4) 추출된 jar 파일을 kams.syst.atchmg.web 에 복사한다. 
 	 * *) 클린, 재빌드, 서버 실행 시 리소스로 인식되서 지워지지않고 자동으로 복사되서 새로 Export 할 필요는 없다. 
 	 * 
-	 * 커맨드 프로그램 실행방법 : java -jar SystAtchmgExecutor.jar oracle.jdbc.OracleDriver jdbc:log4jdbc:oracle:thin:@127.0.0.1:1521:orcl knowhow5 knowhow5
+	 * 커맨드 프로그램 실행방법 : java -jar SystAtchmgExecutor.jar oracle.jdbc.OracleDriver jdbc:log4jdbc:oracle:thin:@127.0.0.1:1521:orcl id pw
 	 * DriverClassName=oracle.jdbc.OracleDriver 변수 넣으면 된다. 순으로 넣으면 된다. 
 	 * Url=jdbc:log4jdbc:oracle:thin:@127.0.0.1:1521:orcl
-	 * User=knowhow5
-	 * Password=knowhow5
+	 * User=id
+	 * Password=pw
 	 */
 	
 	

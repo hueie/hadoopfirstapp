@@ -5,12 +5,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-import org.apache.catalina.Globals;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import ledger.hadoop.sqoop.exe.HadoopSqoopExecutor;
 
 @RunWith(SpringRunner.class)
 //@ContextConfiguration(classes = HadoopConfig.class, loader = AnnotationConfigContextLoader.class)
@@ -18,7 +15,7 @@ public class HadoopSqoop {
 	
 	
 	@Test
-	public void test_sqoop() throws Exception {
+	public void test_sqoop()  {
 		String OS_TYPE = "UNIX";
 		
 		String dcn = "jdbc:mysql://";
@@ -29,15 +26,7 @@ public class HadoopSqoop {
 		String table = "sqoop_test";
 		try {
 		    if ("WINDOWS".equals(OS_TYPE)) {
-		    	/* Sub Example
-		    	//Runtime.getRuntime().exec("jar cf SystAtchmgExecutor.jar SystAtchmgExecutor SystAtchmgExecutor.class");
-		    	Process proc = Runtime.getRuntime().exec("cmd /c SysAtchmgExecutor.bat");
-		    	proc.waitFor();
-		    	System.out.println("bye");
-		    	Runtime.getRuntime().exec("cmd /c java -jar SystAtchmgExecutor.jar");
-		    	System.getProperty("java.home")+"\\bin\\java"
-		    	*/
-		    	
+		    	/*
 		    	//Thread Way
 		    	new Thread(new Runnable() {
 		    	    public void run() {
@@ -73,6 +62,19 @@ public class HadoopSqoop {
 		    	        }
 		    	    }
 		    	}).start();
+		    	*/
+		    	
+		    	
+		    	
+		    	/* Sub Example
+		    	//Runtime.getRuntime().exec("jar cf SystAtchmgExecutor.jar SystAtchmgExecutor SystAtchmgExecutor.class");
+		    	Process proc = Runtime.getRuntime().exec("cmd /c SysAtchmgExecutor.bat");
+		    	proc.waitFor();
+		    	System.out.println("bye");
+		    	Runtime.getRuntime().exec("cmd /c java -jar SystAtchmgExecutor.jar");
+		    	System.getProperty("java.home")+"\\bin\\java"
+		    	*/
+		    	
 		    	
 		    	
 		    	//Non-Thread Way
@@ -109,17 +111,9 @@ public class HadoopSqoop {
 			}else if ("UNIX".equals(OS_TYPE)) {
 				new Thread(new Runnable() {
 		    	    public void run() {
-		    	    	String abspath = HadoopSqoopExecutor.class.getProtectionDomain().getCodeSource().getLocation().getPath();
-				    	int i = abspath.lastIndexOf("/");
-				        if(i > -1) abspath = abspath.substring(1, i);
-				    	System.out.println("abspath : " + abspath);
-						System.out.println(dcn + url + user +pwd);
-						
 		    	    	InputStream is = null;
 		    	        try {
 		    	        	//sqoop import --connect jdbc:mysql://192.168.1.129:3306/testdb --username sqoop -P --table sqoop_test
-		    	        	
-		    	        	
 		    	        	ProcessBuilder pb = new ProcessBuilder("sqoop", "import","--connect", dcn+url+"/"+tablespace,"--username" ,user,"--password" ,pwd,"--table", table);
 		    		    	Process p = pb.start();
 		    		    	is = p.getInputStream();
