@@ -29,7 +29,7 @@
 </td>
 <td>
 <div class="infoBox" id="failures">
-<div class="counter">0</div>
+<div class="counter">1</div>
 <p>failures</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.051s</div>
+<div class="counter">0.114s</div>
 <p>duration</p>
 </div>
 </td>
@@ -50,8 +50,8 @@
 </div>
 </td>
 <td>
-<div class="infoBox success" id="successRate">
-<div class="percent">100%</div>
+<div class="infoBox failures" id="successRate">
+<div class="percent">0%</div>
 <p>successful</p>
 </div>
 </td>
@@ -61,13 +61,149 @@
 <div id="tabs">
 <ul class="tabLinks">
 <li>
-<a href="#tab0">Tests</a>
+<a href="#tab0">Failed tests</a>
 </li>
 <li>
-<a href="#tab1">Standard output</a>
+<a href="#tab1">Tests</a>
+</li>
+<li>
+<a href="#tab2">Standard output</a>
+</li>
+<li>
+<a href="#tab3">Standard error</a>
 </li>
 </ul>
 <div id="tab0" class="tab">
+<h2>Failed tests</h2>
+<div class="test">
+<a name="HadoopClient"></a>
+<h3 class="failures">HadoopClient</h3>
+<span class="code">
+<pre>java.io.FileNotFoundException: File does not exist: /test/HadoopClientFileTransferToHDFSTest.txt
+	at org.apache.hadoop.hdfs.server.namenode.INodeFile.valueOf(INodeFile.java:71)
+	at org.apache.hadoop.hdfs.server.namenode.INodeFile.valueOf(INodeFile.java:61)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.getBlockLocationsInt(FSNamesystem.java:1828)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.getBlockLocations(FSNamesystem.java:1799)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.getBlockLocations(FSNamesystem.java:1712)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.getBlockLocations(NameNodeRpcServer.java:588)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.getBlockLocations(ClientNamenodeProtocolServerSideTranslatorPB.java:365)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:616)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:982)
+	at org.apache.hadoop.ipc.Server$Handler$1.run(Server.java:2049)
+	at org.apache.hadoop.ipc.Server$Handler$1.run(Server.java:2045)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:415)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1698)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2043)
+
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.apache.hadoop.ipc.RemoteException.instantiateException(RemoteException.java:106)
+	at org.apache.hadoop.ipc.RemoteException.unwrapRemoteException(RemoteException.java:73)
+	at org.apache.hadoop.hdfs.DFSClient.callGetBlockLocations(DFSClient.java:1242)
+	at org.apache.hadoop.hdfs.DFSClient.getLocatedBlocks(DFSClient.java:1227)
+	at org.apache.hadoop.hdfs.DFSClient.getLocatedBlocks(DFSClient.java:1215)
+	at org.apache.hadoop.hdfs.DFSInputStream.fetchLocatedBlocksAndGetLastBlockLength(DFSInputStream.java:303)
+	at org.apache.hadoop.hdfs.DFSInputStream.openInfo(DFSInputStream.java:269)
+	at org.apache.hadoop.hdfs.DFSInputStream.&lt;init&gt;(DFSInputStream.java:261)
+	at org.apache.hadoop.hdfs.DFSClient.open(DFSClient.java:1540)
+	at org.apache.hadoop.hdfs.DistributedFileSystem$3.doCall(DistributedFileSystem.java:304)
+	at org.apache.hadoop.hdfs.DistributedFileSystem$3.doCall(DistributedFileSystem.java:299)
+	at org.apache.hadoop.fs.FileSystemLinkResolver.resolve(FileSystemLinkResolver.java:81)
+	at org.apache.hadoop.hdfs.DistributedFileSystem.open(DistributedFileSystem.java:312)
+	at org.apache.hadoop.fs.FileSystem.open(FileSystem.java:767)
+	at org.springframework.data.hadoop.fs.SimplerFileSystem.open(SimplerFileSystem.java:116)
+	at ledger.hadoop.config.LedgerHdfsClient.readFile(LedgerHdfsClient.java:56)
+	at ledger.hadoop.client.file.HadoopClientFileWriteToHDFSTest.HadoopClient(HadoopClientFileWriteToHDFSTest.java:57)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestMethodCallbacks.evaluate(RunBeforeTestMethodCallbacks.java:75)
+	at org.springframework.test.context.junit4.statements.RunAfterTestMethodCallbacks.evaluate(RunAfterTestMethodCallbacks.java:86)
+	at org.springframework.test.context.junit4.statements.SpringRepeat.evaluate(SpringRepeat.java:84)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:252)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:94)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:191)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecuter.runTestClass(JUnitTestClassExecuter.java:112)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecuter.execute(JUnitTestClassExecuter.java:56)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassProcessor.processTestClass(JUnitTestClassProcessor.java:66)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.gradle.messaging.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.messaging.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.messaging.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32)
+	at org.gradle.messaging.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93)
+	at com.sun.proxy.$Proxy2.processTestClass(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:109)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.gradle.messaging.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.messaging.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.messaging.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:364)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:54)
+	at org.gradle.internal.concurrent.StoppableExecutorImpl$1.run(StoppableExecutorImpl.java:40)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: org.apache.hadoop.ipc.RemoteException(java.io.FileNotFoundException): File does not exist: /test/HadoopClientFileTransferToHDFSTest.txt
+	at org.apache.hadoop.hdfs.server.namenode.INodeFile.valueOf(INodeFile.java:71)
+	at org.apache.hadoop.hdfs.server.namenode.INodeFile.valueOf(INodeFile.java:61)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.getBlockLocationsInt(FSNamesystem.java:1828)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.getBlockLocations(FSNamesystem.java:1799)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.getBlockLocations(FSNamesystem.java:1712)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.getBlockLocations(NameNodeRpcServer.java:588)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.getBlockLocations(ClientNamenodeProtocolServerSideTranslatorPB.java:365)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:616)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:982)
+	at org.apache.hadoop.ipc.Server$Handler$1.run(Server.java:2049)
+	at org.apache.hadoop.ipc.Server$Handler$1.run(Server.java:2045)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:415)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1698)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2043)
+
+	at org.apache.hadoop.ipc.Client.call(Client.java:1476)
+	at org.apache.hadoop.ipc.Client.call(Client.java:1407)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Invoker.invoke(ProtobufRpcEngine.java:229)
+	at com.sun.proxy.$Proxy30.getBlockLocations(Unknown Source)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolTranslatorPB.getBlockLocations(ClientNamenodeProtocolTranslatorPB.java:255)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.hadoop.io.retry.RetryInvocationHandler.invokeMethod(RetryInvocationHandler.java:187)
+	at org.apache.hadoop.io.retry.RetryInvocationHandler.invoke(RetryInvocationHandler.java:102)
+	at com.sun.proxy.$Proxy31.getBlockLocations(Unknown Source)
+	at org.apache.hadoop.hdfs.DFSClient.callGetBlockLocations(DFSClient.java:1240)
+	... 63 more
+</pre>
+</span>
+</div>
+</div>
+<div id="tab1" class="tab">
 <h2>Tests</h2>
 <table>
 <thead>
@@ -78,67 +214,213 @@
 </tr>
 </thead>
 <tr>
-<td class="success">HadoopClient</td>
-<td>0.051s</td>
-<td class="success">passed</td>
+<td class="failures">HadoopClient</td>
+<td>0.114s</td>
+<td class="failures">failed</td>
 </tr>
 </table>
 </div>
-<div id="tab1" class="tab">
+<div id="tab2" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>14:34:02.948 [Test worker] DEBUG org.springframework.test.context.junit4.SpringJUnit4ClassRunner - SpringJUnit4ClassRunner constructor called with [class ledger.hadoop.client.file.HadoopClientFileWriteToHDFSTest]
-14:34:02.948 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
-14:34:02.948 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
-14:34:02.948 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [ledger.hadoop.client.file.HadoopClientFileWriteToHDFSTest] from class [org.springframework.test.context.support.DefaultTestContextBootstrapper]
-14:34:02.949 [Test worker] DEBUG org.springframework.test.context.support.DefaultTestContextBootstrapper - Found explicit ContextLoader class [org.springframework.test.context.support.AnnotationConfigContextLoader] for context configuration attributes [ContextConfigurationAttributes@634beb4 declaringClass = 'ledger.hadoop.client.file.HadoopClientFileWriteToHDFSTest', classes = '{class ledger.hadoop.config.HadoopConfig}', locations = '{}', inheritLocations = true, initializers = '{}', inheritInitializers = true, name = [null], contextLoaderClass = 'org.springframework.test.context.support.AnnotationConfigContextLoader']
-14:34:02.976 [Test worker] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [ledger.hadoop.client.file.HadoopClientFileWriteToHDFSTest]
-14:34:02.976 [Test worker] DEBUG org.springframework.test.context.support.DefaultTestContextBootstrapper - @TestExecutionListeners is not present for class [ledger.hadoop.client.file.HadoopClientFileWriteToHDFSTest]: using defaults.
-14:34:02.981 [Test worker] INFO org.springframework.test.context.support.DefaultTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
-14:34:02.981 [Test worker] INFO org.springframework.test.context.support.DefaultTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@7c21a203, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@e244749, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@4841cdac, org.springframework.test.context.support.DirtiesContextTestExecutionListener@42f7290a, org.springframework.test.context.transaction.TransactionalTestExecutionListener@3337baed, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@1f05adcd, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@596f2f2c, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@22abe272, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@2cc5d418, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@1e9c6f88, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@3eaa2538, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@436ff8ed]
-14:34:02.982 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [ledger.hadoop.client.file.HadoopClientFileWriteToHDFSTest]
-14:34:02.982 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [ledger.hadoop.client.file.HadoopClientFileWriteToHDFSTest]
-14:34:02.982 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [ledger.hadoop.client.file.HadoopClientFileWriteToHDFSTest]
-14:34:02.982 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [ledger.hadoop.client.file.HadoopClientFileWriteToHDFSTest]
-14:34:02.984 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@4188918c testClass = HadoopClientFileWriteToHDFSTest, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@3c15561a testClass = HadoopClientFileWriteToHDFSTest, locations = '{}', classes = '{class ledger.hadoop.config.HadoopConfig}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@682484a5, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@b3f373], contextLoader = 'org.springframework.test.context.support.AnnotationConfigContextLoader', parent = [null]]], class annotated with @DirtiesContext [false] with mode [null].
-14:34:02.984 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [ledger.hadoop.client.file.HadoopClientFileWriteToHDFSTest]
-14:34:02.984 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [ledger.hadoop.client.file.HadoopClientFileWriteToHDFSTest]
-14:34:02.985 [Test worker] DEBUG org.springframework.test.context.support.DependencyInjectionTestExecutionListener - Performing dependency injection for test context [[DefaultTestContext@4188918c testClass = HadoopClientFileWriteToHDFSTest, testInstance = ledger.hadoop.client.file.HadoopClientFileWriteToHDFSTest@53793745, testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@3c15561a testClass = HadoopClientFileWriteToHDFSTest, locations = '{}', classes = '{class ledger.hadoop.config.HadoopConfig}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@682484a5, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@b3f373], contextLoader = 'org.springframework.test.context.support.AnnotationConfigContextLoader', parent = [null]]]].
-14:34:02.986 [Test worker] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext from cache with key [[MergedContextConfiguration@3c15561a testClass = HadoopClientFileWriteToHDFSTest, locations = '{}', classes = '{class ledger.hadoop.config.HadoopConfig}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@682484a5, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@b3f373], contextLoader = 'org.springframework.test.context.support.AnnotationConfigContextLoader', parent = [null]]]
-14:34:02.986 [Test worker] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@799a9518 size = 2, maxSize = 32, parentContextCount = 0, hitCount = 14, missCount = 2]
-14:34:02.989 [Test worker] DEBUG org.springframework.beans.factory.annotation.InjectionMetadata - Processing injected element of bean 'ledger.hadoop.client.file.HadoopClientFileWriteToHDFSTest': ResourceElement for private ledger.hadoop.config.LedgerHdfsClient ledger.hadoop.client.file.HadoopClientFileWriteToHDFSTest.ledgerHdfsClient
-14:34:02.989 [Test worker] DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory - Returning cached instance of singleton bean 'LedgerHdfsClient'
-14:34:02.991 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test method: context [DefaultTestContext@4188918c testClass = HadoopClientFileWriteToHDFSTest, testInstance = ledger.hadoop.client.file.HadoopClientFileWriteToHDFSTest@53793745, testMethod = HadoopClient@HadoopClientFileWriteToHDFSTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@3c15561a testClass = HadoopClientFileWriteToHDFSTest, locations = '{}', classes = '{class ledger.hadoop.config.HadoopConfig}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@682484a5, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@b3f373], contextLoader = 'org.springframework.test.context.support.AnnotationConfigContextLoader', parent = [null]]], class annotated with @DirtiesContext [false] with mode [null], method annotated with @DirtiesContext [false] with mode [null].
-14:34:02.992 [Test worker] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext from cache with key [[MergedContextConfiguration@3c15561a testClass = HadoopClientFileWriteToHDFSTest, locations = '{}', classes = '{class ledger.hadoop.config.HadoopConfig}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@682484a5, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@b3f373], contextLoader = 'org.springframework.test.context.support.AnnotationConfigContextLoader', parent = [null]]]
-14:34:02.992 [Test worker] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@799a9518 size = 2, maxSize = 32, parentContextCount = 0, hitCount = 15, missCount = 2]
-14:34:02.993 [Test worker] DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory - Returning cached instance of singleton bean 'org.springframework.boot.test.mock.mockito.MockitoBeans'
+<pre>17:56:28.041 [Test worker] DEBUG org.springframework.test.context.junit4.SpringJUnit4ClassRunner - SpringJUnit4ClassRunner constructor called with [class ledger.hadoop.client.file.HadoopClientFileWriteToHDFSTest]
+17:56:28.041 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+17:56:28.041 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+17:56:28.041 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [ledger.hadoop.client.file.HadoopClientFileWriteToHDFSTest] from class [org.springframework.test.context.support.DefaultTestContextBootstrapper]
+17:56:28.051 [Test worker] DEBUG org.springframework.test.context.support.DefaultTestContextBootstrapper - Found explicit ContextLoader class [org.springframework.test.context.support.AnnotationConfigContextLoader] for context configuration attributes [ContextConfigurationAttributes@526722db declaringClass = 'ledger.hadoop.client.file.HadoopClientFileWriteToHDFSTest', classes = '{class ledger.hadoop.config.HadoopConfig}', locations = '{}', inheritLocations = true, initializers = '{}', inheritInitializers = true, name = [null], contextLoaderClass = 'org.springframework.test.context.support.AnnotationConfigContextLoader']
+17:56:28.059 [Test worker] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [ledger.hadoop.client.file.HadoopClientFileWriteToHDFSTest]
+17:56:28.060 [Test worker] DEBUG org.springframework.test.context.support.DefaultTestContextBootstrapper - @TestExecutionListeners is not present for class [ledger.hadoop.client.file.HadoopClientFileWriteToHDFSTest]: using defaults.
+17:56:28.063 [Test worker] INFO org.springframework.test.context.support.DefaultTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+17:56:28.071 [Test worker] INFO org.springframework.test.context.support.DefaultTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@21c63950, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@3d40360e, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@36c517b4, org.springframework.test.context.support.DirtiesContextTestExecutionListener@2b7a1a64, org.springframework.test.context.transaction.TransactionalTestExecutionListener@3be6bae2, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@7aa0bd6, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@194cd420, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@629e4457, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@6ca1d34c, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@3b8291b5, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@4410bf31, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@543ce718]
+17:56:28.071 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [ledger.hadoop.client.file.HadoopClientFileWriteToHDFSTest]
+17:56:28.071 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [ledger.hadoop.client.file.HadoopClientFileWriteToHDFSTest]
+17:56:28.071 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [ledger.hadoop.client.file.HadoopClientFileWriteToHDFSTest]
+17:56:28.072 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [ledger.hadoop.client.file.HadoopClientFileWriteToHDFSTest]
+17:56:28.072 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@36656560 testClass = HadoopClientFileWriteToHDFSTest, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@19c55520 testClass = HadoopClientFileWriteToHDFSTest, locations = '{}', classes = '{class ledger.hadoop.config.HadoopConfig}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@7269a7d6, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@1e305a31], contextLoader = 'org.springframework.test.context.support.AnnotationConfigContextLoader', parent = [null]]], class annotated with @DirtiesContext [false] with mode [null].
+17:56:28.072 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [ledger.hadoop.client.file.HadoopClientFileWriteToHDFSTest]
+17:56:28.072 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [ledger.hadoop.client.file.HadoopClientFileWriteToHDFSTest]
+17:56:28.072 [Test worker] DEBUG org.springframework.test.context.support.DependencyInjectionTestExecutionListener - Performing dependency injection for test context [[DefaultTestContext@36656560 testClass = HadoopClientFileWriteToHDFSTest, testInstance = ledger.hadoop.client.file.HadoopClientFileWriteToHDFSTest@586d981e, testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@19c55520 testClass = HadoopClientFileWriteToHDFSTest, locations = '{}', classes = '{class ledger.hadoop.config.HadoopConfig}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@7269a7d6, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@1e305a31], contextLoader = 'org.springframework.test.context.support.AnnotationConfigContextLoader', parent = [null]]]].
+17:56:28.072 [Test worker] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext from cache with key [[MergedContextConfiguration@19c55520 testClass = HadoopClientFileWriteToHDFSTest, locations = '{}', classes = '{class ledger.hadoop.config.HadoopConfig}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@7269a7d6, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@1e305a31], contextLoader = 'org.springframework.test.context.support.AnnotationConfigContextLoader', parent = [null]]]
+17:56:28.072 [Test worker] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@44999164 size = 2, maxSize = 32, parentContextCount = 0, hitCount = 17, missCount = 2]
+17:56:28.075 [Test worker] DEBUG org.springframework.beans.factory.annotation.InjectionMetadata - Processing injected element of bean 'ledger.hadoop.client.file.HadoopClientFileWriteToHDFSTest': ResourceElement for private ledger.hadoop.config.LedgerHdfsClient ledger.hadoop.client.file.HadoopClientFileWriteToHDFSTest.ledgerHdfsClient
+17:56:28.075 [Test worker] DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory - Returning cached instance of singleton bean 'LedgerHdfsClient'
+17:56:28.076 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test method: context [DefaultTestContext@36656560 testClass = HadoopClientFileWriteToHDFSTest, testInstance = ledger.hadoop.client.file.HadoopClientFileWriteToHDFSTest@586d981e, testMethod = HadoopClient@HadoopClientFileWriteToHDFSTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@19c55520 testClass = HadoopClientFileWriteToHDFSTest, locations = '{}', classes = '{class ledger.hadoop.config.HadoopConfig}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@7269a7d6, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@1e305a31], contextLoader = 'org.springframework.test.context.support.AnnotationConfigContextLoader', parent = [null]]], class annotated with @DirtiesContext [false] with mode [null], method annotated with @DirtiesContext [false] with mode [null].
+17:56:28.076 [Test worker] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext from cache with key [[MergedContextConfiguration@19c55520 testClass = HadoopClientFileWriteToHDFSTest, locations = '{}', classes = '{class ledger.hadoop.config.HadoopConfig}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@7269a7d6, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@1e305a31], contextLoader = 'org.springframework.test.context.support.AnnotationConfigContextLoader', parent = [null]]]
+17:56:28.077 [Test worker] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@44999164 size = 2, maxSize = 32, parentContextCount = 0, hitCount = 18, missCount = 2]
+17:56:28.077 [Test worker] DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory - Returning cached instance of singleton bean 'org.springframework.boot.test.mock.mockito.MockitoBeans'
 File Transfers (Writes) To HDFS Start!
-14:34:02.997 [IPC Parameter Sending Thread #0] DEBUG org.apache.hadoop.ipc.Client - IPC Client (625835514) connection to /192.168.1.129:9000 from kait sending #4
-14:34:03.011 [IPC Client (625835514) connection to /192.168.1.129:9000 from kait] DEBUG org.apache.hadoop.ipc.Client - IPC Client (625835514) connection to /192.168.1.129:9000 from kait got value #4
-14:34:03.011 [Test worker] DEBUG org.apache.hadoop.ipc.ProtobufRpcEngine - Call: getFileInfo took 15ms
-14:34:03.027 [IPC Parameter Sending Thread #0] DEBUG org.apache.hadoop.ipc.Client - IPC Client (625835514) connection to /192.168.1.129:9000 from kait sending #5
-14:34:03.031 [IPC Client (625835514) connection to /192.168.1.129:9000 from kait] DEBUG org.apache.hadoop.ipc.Client - IPC Client (625835514) connection to /192.168.1.129:9000 from kait got value #5
-14:34:03.031 [Test worker] DEBUG org.apache.hadoop.ipc.ProtobufRpcEngine - Call: getBlockLocations took 9ms
-14:34:03.032 [Test worker] DEBUG org.apache.hadoop.hdfs.DFSClient - newInfo = LocatedBlocks{
-  fileLength=28
-  underConstruction=false
-  blocks=[LocatedBlock{BP-1570460884-127.0.1.1-1492130562839:blk_1073741831_1007; getBlockSize()=28; corrupt=false; offset=0; locs=[DatanodeInfoWithStorage[192.168.1.129:50010,DS-240452f0-89de-4ce4-895d-43ca9884bd8c,DISK]]}]
-  lastLocatedBlock=LocatedBlock{BP-1570460884-127.0.1.1-1492130562839:blk_1073741831_1007; getBlockSize()=28; corrupt=false; offset=0; locs=[DatanodeInfoWithStorage[192.168.1.129:50010,DS-240452f0-89de-4ce4-895d-43ca9884bd8c,DISK]]}
-  isLastBlockComplete=true}
-14:34:03.033 [Test worker] DEBUG org.apache.hadoop.hdfs.DFSClient - Connecting to datanode 192.168.1.129:50010
-Hello, I'm Youngseok Joung.
-14:34:03.036 [Test worker] WARN org.apache.hadoop.hdfs.DFSClient - DFSInputStream has been closed already
-Output : Hello, I'm Youngseok Joung.
-File Transfers (Writes) To HDFS End!
-14:34:03.036 [Test worker] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext from cache with key [[MergedContextConfiguration@3c15561a testClass = HadoopClientFileWriteToHDFSTest, locations = '{}', classes = '{class ledger.hadoop.config.HadoopConfig}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@682484a5, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@b3f373], contextLoader = 'org.springframework.test.context.support.AnnotationConfigContextLoader', parent = [null]]]
-14:34:03.036 [Test worker] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@799a9518 size = 2, maxSize = 32, parentContextCount = 0, hitCount = 16, missCount = 2]
-14:34:03.037 [Test worker] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext from cache with key [[MergedContextConfiguration@3c15561a testClass = HadoopClientFileWriteToHDFSTest, locations = '{}', classes = '{class ledger.hadoop.config.HadoopConfig}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@682484a5, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@b3f373], contextLoader = 'org.springframework.test.context.support.AnnotationConfigContextLoader', parent = [null]]]
-14:34:03.037 [Test worker] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@799a9518 size = 2, maxSize = 32, parentContextCount = 0, hitCount = 17, missCount = 2]
-14:34:03.039 [Test worker] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext from cache with key [[MergedContextConfiguration@3c15561a testClass = HadoopClientFileWriteToHDFSTest, locations = '{}', classes = '{class ledger.hadoop.config.HadoopConfig}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@682484a5, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@b3f373], contextLoader = 'org.springframework.test.context.support.AnnotationConfigContextLoader', parent = [null]]]
-14:34:03.039 [Test worker] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@799a9518 size = 2, maxSize = 32, parentContextCount = 0, hitCount = 18, missCount = 2]
-14:34:03.040 [Test worker] DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory - Returning cached instance of singleton bean 'org.springframework.boot.test.mock.mockito.MockitoBeans'
-14:34:03.042 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - After test method: context [DefaultTestContext@4188918c testClass = HadoopClientFileWriteToHDFSTest, testInstance = ledger.hadoop.client.file.HadoopClientFileWriteToHDFSTest@53793745, testMethod = HadoopClient@HadoopClientFileWriteToHDFSTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@3c15561a testClass = HadoopClientFileWriteToHDFSTest, locations = '{}', classes = '{class ledger.hadoop.config.HadoopConfig}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@682484a5, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@b3f373], contextLoader = 'org.springframework.test.context.support.AnnotationConfigContextLoader', parent = [null]]], class annotated with @DirtiesContext [false] with mode [null], method annotated with @DirtiesContext [false] with mode [null].
-14:34:03.042 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - After test class: context [DefaultTestContext@4188918c testClass = HadoopClientFileWriteToHDFSTest, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@3c15561a testClass = HadoopClientFileWriteToHDFSTest, locations = '{}', classes = '{class ledger.hadoop.config.HadoopConfig}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@682484a5, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@b3f373], contextLoader = 'org.springframework.test.context.support.AnnotationConfigContextLoader', parent = [null]]], class annotated with @DirtiesContext [false] with mode [null].
+17:56:28.080 [IPC Parameter Sending Thread #0] DEBUG org.apache.hadoop.ipc.Client - IPC Client (1384379791) connection to /192.168.1.129:9000 from kait sending #3
+17:56:28.082 [IPC Client (1384379791) connection to /192.168.1.129:9000 from kait] DEBUG org.apache.hadoop.ipc.Client - IPC Client (1384379791) connection to /192.168.1.129:9000 from kait got value #3
+17:56:28.083 [Test worker] DEBUG org.apache.hadoop.ipc.ProtobufRpcEngine - Call: getFileInfo took 3ms
+17:56:28.105 [Test worker] DEBUG org.apache.hadoop.hdfs.DFSClient - /test/HadoopClientFileTransferToHDFSTest.txt: masked=rw-r--r--
+17:56:28.166 [IPC Parameter Sending Thread #0] DEBUG org.apache.hadoop.ipc.Client - IPC Client (1384379791) connection to /192.168.1.129:9000 from kait sending #4
+17:56:28.168 [IPC Client (1384379791) connection to /192.168.1.129:9000 from kait] DEBUG org.apache.hadoop.ipc.Client - IPC Client (1384379791) connection to /192.168.1.129:9000 from kait got value #4
+17:56:28.182 [IPC Parameter Sending Thread #0] DEBUG org.apache.hadoop.ipc.Client - IPC Client (1384379791) connection to /192.168.1.129:9000 from kait sending #5
+17:56:28.184 [IPC Client (1384379791) connection to /192.168.1.129:9000 from kait] DEBUG org.apache.hadoop.ipc.Client - IPC Client (1384379791) connection to /192.168.1.129:9000 from kait got value #5
+17:56:28.186 [Test worker] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext from cache with key [[MergedContextConfiguration@19c55520 testClass = HadoopClientFileWriteToHDFSTest, locations = '{}', classes = '{class ledger.hadoop.config.HadoopConfig}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@7269a7d6, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@1e305a31], contextLoader = 'org.springframework.test.context.support.AnnotationConfigContextLoader', parent = [null]]]
+17:56:28.186 [Test worker] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@44999164 size = 2, maxSize = 32, parentContextCount = 0, hitCount = 19, missCount = 2]
+17:56:28.187 [Test worker] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext from cache with key [[MergedContextConfiguration@19c55520 testClass = HadoopClientFileWriteToHDFSTest, locations = '{}', classes = '{class ledger.hadoop.config.HadoopConfig}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@7269a7d6, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@1e305a31], contextLoader = 'org.springframework.test.context.support.AnnotationConfigContextLoader', parent = [null]]]
+17:56:28.187 [Test worker] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@44999164 size = 2, maxSize = 32, parentContextCount = 0, hitCount = 20, missCount = 2]
+17:56:28.189 [Test worker] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext from cache with key [[MergedContextConfiguration@19c55520 testClass = HadoopClientFileWriteToHDFSTest, locations = '{}', classes = '{class ledger.hadoop.config.HadoopConfig}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@7269a7d6, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@1e305a31], contextLoader = 'org.springframework.test.context.support.AnnotationConfigContextLoader', parent = [null]]]
+17:56:28.189 [Test worker] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@44999164 size = 2, maxSize = 32, parentContextCount = 0, hitCount = 21, missCount = 2]
+17:56:28.189 [Test worker] DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory - Returning cached instance of singleton bean 'org.springframework.boot.test.mock.mockito.MockitoBeans'
+17:56:28.189 [Test worker] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext from cache with key [[MergedContextConfiguration@19c55520 testClass = HadoopClientFileWriteToHDFSTest, locations = '{}', classes = '{class ledger.hadoop.config.HadoopConfig}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@7269a7d6, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@1e305a31], contextLoader = 'org.springframework.test.context.support.AnnotationConfigContextLoader', parent = [null]]]
+17:56:28.189 [Test worker] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@44999164 size = 2, maxSize = 32, parentContextCount = 0, hitCount = 22, missCount = 2]
+17:56:28.190 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - After test method: context [DefaultTestContext@36656560 testClass = HadoopClientFileWriteToHDFSTest, testInstance = ledger.hadoop.client.file.HadoopClientFileWriteToHDFSTest@586d981e, testMethod = HadoopClient@HadoopClientFileWriteToHDFSTest, testException = java.io.FileNotFoundException: File does not exist: /test/HadoopClientFileTransferToHDFSTest.txt
+	at org.apache.hadoop.hdfs.server.namenode.INodeFile.valueOf(INodeFile.java:71)
+	at org.apache.hadoop.hdfs.server.namenode.INodeFile.valueOf(INodeFile.java:61)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.getBlockLocationsInt(FSNamesystem.java:1828)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.getBlockLocations(FSNamesystem.java:1799)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.getBlockLocations(FSNamesystem.java:1712)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.getBlockLocations(NameNodeRpcServer.java:588)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.getBlockLocations(ClientNamenodeProtocolServerSideTranslatorPB.java:365)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:616)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:982)
+	at org.apache.hadoop.ipc.Server$Handler$1.run(Server.java:2049)
+	at org.apache.hadoop.ipc.Server$Handler$1.run(Server.java:2045)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:415)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1698)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2043)
+, mergedContextConfiguration = [MergedContextConfiguration@19c55520 testClass = HadoopClientFileWriteToHDFSTest, locations = '{}', classes = '{class ledger.hadoop.config.HadoopConfig}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@7269a7d6, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@1e305a31], contextLoader = 'org.springframework.test.context.support.AnnotationConfigContextLoader', parent = [null]]], class annotated with @DirtiesContext [false] with mode [null], method annotated with @DirtiesContext [false] with mode [null].
+17:56:28.190 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - After test class: context [DefaultTestContext@36656560 testClass = HadoopClientFileWriteToHDFSTest, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@19c55520 testClass = HadoopClientFileWriteToHDFSTest, locations = '{}', classes = '{class ledger.hadoop.config.HadoopConfig}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@7269a7d6, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@1e305a31], contextLoader = 'org.springframework.test.context.support.AnnotationConfigContextLoader', parent = [null]]], class annotated with @DirtiesContext [false] with mode [null].
+</pre>
+</span>
+</div>
+<div id="tab3" class="tab">
+<h2>Standard error</h2>
+<span class="code">
+<pre>org.apache.hadoop.security.AccessControlException: Permission denied: user=kait, access=WRITE, inode=&quot;/test/HadoopClientFileTransferToHDFSTest.txt&quot;:alpha:supergroup:drwxr-xr-x
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.check(FSPermissionChecker.java:319)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.check(FSPermissionChecker.java:292)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:213)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:190)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1728)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1712)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkAncestorAccess(FSDirectory.java:1695)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.startFileInternal(FSNamesystem.java:2515)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.startFileInt(FSNamesystem.java:2450)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.startFile(FSNamesystem.java:2334)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.create(NameNodeRpcServer.java:624)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.create(ClientNamenodeProtocolServerSideTranslatorPB.java:397)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:616)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:982)
+	at org.apache.hadoop.ipc.Server$Handler$1.run(Server.java:2049)
+	at org.apache.hadoop.ipc.Server$Handler$1.run(Server.java:2045)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:415)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1698)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2043)
+
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.apache.hadoop.ipc.RemoteException.instantiateException(RemoteException.java:106)
+	at org.apache.hadoop.ipc.RemoteException.unwrapRemoteException(RemoteException.java:73)
+	at org.apache.hadoop.hdfs.DFSOutputStream.newStreamForCreate(DFSOutputStream.java:1628)
+	at org.apache.hadoop.hdfs.DFSClient.create(DFSClient.java:1703)
+	at org.apache.hadoop.hdfs.DFSClient.create(DFSClient.java:1638)
+	at org.apache.hadoop.hdfs.DistributedFileSystem$7.doCall(DistributedFileSystem.java:448)
+	at org.apache.hadoop.hdfs.DistributedFileSystem$7.doCall(DistributedFileSystem.java:444)
+	at org.apache.hadoop.fs.FileSystemLinkResolver.resolve(FileSystemLinkResolver.java:81)
+	at org.apache.hadoop.hdfs.DistributedFileSystem.create(DistributedFileSystem.java:459)
+	at org.apache.hadoop.hdfs.DistributedFileSystem.create(DistributedFileSystem.java:387)
+	at org.apache.hadoop.fs.FileSystem.create(FileSystem.java:909)
+	at org.apache.hadoop.fs.FileSystem.create(FileSystem.java:890)
+	at org.apache.hadoop.fs.FileSystem.create(FileSystem.java:787)
+	at org.apache.hadoop.fs.FileSystem.create(FileSystem.java:776)
+	at org.springframework.data.hadoop.fs.SimplerFileSystem.create(SimplerFileSystem.java:124)
+	at ledger.hadoop.client.file.HadoopClientFileWriteToHDFSTest.writeFile(HadoopClientFileWriteToHDFSTest.java:69)
+	at ledger.hadoop.client.file.HadoopClientFileWriteToHDFSTest.HadoopClient(HadoopClientFileWriteToHDFSTest.java:54)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestMethodCallbacks.evaluate(RunBeforeTestMethodCallbacks.java:75)
+	at org.springframework.test.context.junit4.statements.RunAfterTestMethodCallbacks.evaluate(RunAfterTestMethodCallbacks.java:86)
+	at org.springframework.test.context.junit4.statements.SpringRepeat.evaluate(SpringRepeat.java:84)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:252)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:94)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:191)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecuter.runTestClass(JUnitTestClassExecuter.java:112)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecuter.execute(JUnitTestClassExecuter.java:56)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassProcessor.processTestClass(JUnitTestClassProcessor.java:66)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.gradle.messaging.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.messaging.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.messaging.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32)
+	at org.gradle.messaging.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93)
+	at com.sun.proxy.$Proxy2.processTestClass(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:109)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.gradle.messaging.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.messaging.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.messaging.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:364)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:54)
+	at org.gradle.internal.concurrent.StoppableExecutorImpl$1.run(StoppableExecutorImpl.java:40)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.security.AccessControlException): Permission denied: user=kait, access=WRITE, inode=&quot;/test/HadoopClientFileTransferToHDFSTest.txt&quot;:alpha:supergroup:drwxr-xr-x
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.check(FSPermissionChecker.java:319)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.check(FSPermissionChecker.java:292)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:213)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:190)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1728)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1712)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkAncestorAccess(FSDirectory.java:1695)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.startFileInternal(FSNamesystem.java:2515)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.startFileInt(FSNamesystem.java:2450)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.startFile(FSNamesystem.java:2334)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.create(NameNodeRpcServer.java:624)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.create(ClientNamenodeProtocolServerSideTranslatorPB.java:397)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:616)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:982)
+	at org.apache.hadoop.ipc.Server$Handler$1.run(Server.java:2049)
+	at org.apache.hadoop.ipc.Server$Handler$1.run(Server.java:2045)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:415)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1698)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2043)
+
+	at org.apache.hadoop.ipc.Client.call(Client.java:1476)
+	at org.apache.hadoop.ipc.Client.call(Client.java:1407)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Invoker.invoke(ProtobufRpcEngine.java:229)
+	at com.sun.proxy.$Proxy30.create(Unknown Source)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolTranslatorPB.create(ClientNamenodeProtocolTranslatorPB.java:296)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.hadoop.io.retry.RetryInvocationHandler.invokeMethod(RetryInvocationHandler.java:187)
+	at org.apache.hadoop.io.retry.RetryInvocationHandler.invoke(RetryInvocationHandler.java:102)
+	at com.sun.proxy.$Proxy31.create(Unknown Source)
+	at org.apache.hadoop.hdfs.DFSOutputStream.newStreamForCreate(DFSOutputStream.java:1623)
+	... 63 more
 </pre>
 </span>
 </div>
@@ -150,7 +432,7 @@ File Transfers (Writes) To HDFS End!
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 2.13</a> at 2017. 4. 14 오후 2:34:03</p>
+<a href="http://www.gradle.org">Gradle 2.13</a> at 2017. 4. 20 오후 5:56:28</p>
 </div>
 </div>
 </body>
