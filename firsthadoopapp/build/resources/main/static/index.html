@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html >
 <head> 
-    <title>Getting Started: Serving Web Content</title> 
+    <title>DobbyDo</title> 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
 </head>
@@ -14,11 +14,26 @@
 	<input type="button" ng-click="PostFullName(1)" value="/Greeting Post Full Name" />
 	<p>ID {{ myData1 }}</p>
 </div>
+<br><br>
     
+<div ng-app="sqoopApp" ng-controller="sqoopCtrl"> 
+	dbtype: <input type="text" ng-model="dbtype"><br>
+	ip: <input type="text" ng-model="ip"><br>
+	port: <input type="text" ng-model="port"><br>
+	tablespace: <input type="text" ng-model="tablespace"><br>
+	user: <input type="text" ng-model="user"><br>
+	pwd: <input type="text" ng-model="pwd"><br>
+	tablename: <input type="text" ng-model="tablename"><br>
+	<input type="button" ng-click="SqoopInsert()" value="Sqoop Insert!!!" />
+	<p>Result {{ sqoop_result }}</p>
+</div>
 
 <script>
-var app = angular.module('myApp', []);
-app.controller('myCtrl', function($scope, $http) {
+/*myApp.js*/
+var myApp = angular.module('myApp', []); 
+
+/*myCtrl.js*/
+myApp.controller('myCtrl', function($scope, $http) {
 	/*GET GO TO Greeting*/
 	$scope.GetFullName = function (employee) {
 	    $http.get( "/ysindex?name=" + $scope.name ).then(function(response) {
@@ -37,6 +52,25 @@ app.controller('myCtrl', function($scope, $http) {
 });
 
 
+
+/*sqoopApp.js*/
+var sqoopApp = angular.module('sqoopApp', []); 
+/*sqoopCtrl.js*/
+sqoopApp.controller('sqoopCtrl', function($scope, $http) {
+	$scope.SqoopInsert = function () {
+	    $http.put( "/sqoopinsert", {
+	    	'dbtype': $scope.dbtype,
+	    	'ip': $scope.ip,
+	    	'port': $scope.port,
+	    	'tablespace': $scope.tablespace,
+	    	'user': $scope.user,
+	    	'pwd': $scope.pwd,
+	    	'tablename': $scope.tablename
+	    }).then(function(response) {
+	    	$scope.sqoop_result = response.data;
+	    });
+	}
+});
 </script>
     
 </body>
