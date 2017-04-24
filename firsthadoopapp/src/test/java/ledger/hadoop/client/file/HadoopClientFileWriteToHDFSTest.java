@@ -15,14 +15,14 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import ledger.hadoop.config.HadoopConfig;
 import ledger.hadoop.config.LedgerHdfsClient;
 
-@RunWith(SpringRunner.class)
+//@RunWith(SpringRunner.class)
 @ContextConfiguration(classes = HadoopConfig.class, loader = AnnotationConfigContextLoader.class)
 public class HadoopClientFileWriteToHDFSTest {
 
 	@Resource(name = "LedgerHdfsClient")
 	private LedgerHdfsClient ledgerHdfsClient;
 
-	@Test
+	//@Test
 	public void HadoopClient() throws Exception {
 		/*
 		 * You can see These Errors

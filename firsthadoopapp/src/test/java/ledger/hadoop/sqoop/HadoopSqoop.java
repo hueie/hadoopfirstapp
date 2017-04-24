@@ -9,12 +9,12 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.junit4.SpringRunner;
 
-@RunWith(SpringRunner.class)
+//@RunWith(SpringRunner.class)
 //@ContextConfiguration(classes = HadoopConfig.class, loader = AnnotationConfigContextLoader.class)
 public class HadoopSqoop {
 	
 	
-	@Test
+	//@Test
 	public void test_sqoop()  {
 		String OS_TYPE = "UNIX";
 		

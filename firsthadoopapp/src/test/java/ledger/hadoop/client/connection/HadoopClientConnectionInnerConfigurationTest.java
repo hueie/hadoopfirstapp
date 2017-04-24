@@ -12,14 +12,14 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 import ledger.hadoop.config.LedgerHdfsClient;
 
-@RunWith(SpringRunner.class)
+//@RunWith(SpringRunner.class)
 @ContextConfiguration(loader=AnnotationConfigContextLoader.class)
 public class HadoopClientConnectionInnerConfigurationTest {
 
 	@Resource(name="LedgerHdfsClient")
 	private LedgerHdfsClient ledgerHdfsClient;
 
-	@Test
+	//@Test
 	public void HadoopClient() throws Exception {
 		System.out.println("Test3 Start!");
 		

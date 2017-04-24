@@ -7,56 +7,71 @@
 </head>
 <body>
 
-
-<div ng-app="myApp" ng-controller="myCtrl"> 
-	Name: <input type="text" ng-model="name"><br>
-	<input type="button" ng-click="GetFullName(1)" value="/Index Get Full Name" />
-	<input type="button" ng-click="PostFullName(1)" value="/Greeting Post Full Name" />
-	<p>ID {{ myData1 }}</p>
+<div ng-app="myApp"> 
+	<div ng-controller="myCtrl">
+		Name: <input type="text" ng-model="name"><br>
+		<input type="button" ng-click="GetFullName(1)" value="/Index Get Full Name" />
+		<input type="button" ng-click="PostFullName(1)" value="/Greeting Post Full Name" />
+		<p>ID {{ myData1 }}</p>
+	</div>
+	
+	<br><br>
+	
+	<div ng-controller="sqoopCtrl"> 
+		<table>
+			<tr>
+				<td>dbtype : </td>
+				<td><input type="text" ng-model="dbtype"></td>
+			</tr>
+			<tr>
+				<td>ip : </td>
+				<td><input type="text" ng-model="ip"></td>
+			</tr>
+			<tr>
+				<td>port : </td>
+				<td><input type="text" ng-model="port"><br></td>
+			</tr>
+			<tr>
+				<td>tablespace : </td>
+				<td><input type="text" ng-model="tablespace"></td>
+			</tr>
+			<tr>
+				<td>user : </td>
+				<td><input type="text" ng-model="user"></td>
+			</tr>
+			<tr>
+				<td>pwd :</td>
+				<td><input type="text" ng-model="pwd"></td>
+			</tr>
+			<tr>
+				<td>tablename : </td>
+				<td><input type="text" ng-model="tablename"></td>
+			</tr>
+			<tr>
+				<td><input type="button" ng-click="SqoopInsert()" value="Sqoop Insert" /></td>
+				<td>Result : {{ sqoop_result }}</td>
+			</tr>
+		</table>
+	</div>
 </div>
-<br><br>
-    
-<div ng-app="sqoopApp" ng-controller="sqoopCtrl"> 
-	dbtype: <input type="text" ng-model="dbtype"><br>
-	ip: <input type="text" ng-model="ip"><br>
-	port: <input type="text" ng-model="port"><br>
-	tablespace: <input type="text" ng-model="tablespace"><br>
-	user: <input type="text" ng-model="user"><br>
-	pwd: <input type="text" ng-model="pwd"><br>
-	tablename: <input type="text" ng-model="tablename"><br>
-	<input type="button" ng-click="SqoopInsert()" value="Sqoop Insert!!!" />
-	<p>Result {{ sqoop_result }}</p>
-</div>
-
 <script>
-/*myApp.js*/
 var myApp = angular.module('myApp', []); 
 
-/*myCtrl.js*/
 myApp.controller('myCtrl', function($scope, $http) {
-	/*GET GO TO Greeting*/
 	$scope.GetFullName = function (employee) {
 	    $http.get( "/ysindex?name=" + $scope.name ).then(function(response) {
 	    	$scope.myData1 = response.data.id;
-	        //$scope.myData2 = response.data.content;
 	    });
 	}
 	
-	/*Post GO TO Greeting*/
 	$scope.PostFullName = function (employee) {
 	    $http.put( "/ysindex", {'name': $scope.name} ).then(function(response) {
 	    	$scope.myData1 = response.data.id;
-	        //$scope.myData2 = response.data.content;
 	    });
 	}
 });
 
-
-
-/*sqoopApp.js*/
-var sqoopApp = angular.module('sqoopApp', []); 
-/*sqoopCtrl.js*/
-sqoopApp.controller('sqoopCtrl', function($scope, $http) {
+myApp.controller('sqoopCtrl', function($scope, $http) {
 	$scope.SqoopInsert = function () {
 	    $http.put( "/sqoopinsert", {
 	    	'dbtype': $scope.dbtype,
@@ -67,7 +82,7 @@ sqoopApp.controller('sqoopCtrl', function($scope, $http) {
 	    	'pwd': $scope.pwd,
 	    	'tablename': $scope.tablename
 	    }).then(function(response) {
-	    	$scope.sqoop_result = response.data;
+	    	$scope.sqoop_result = response.data.id;
 	    });
 	}
 });
